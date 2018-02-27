@@ -1,0 +1,231 @@
+{
+	"variables": [],
+	"info": {
+		"name": "eagro",
+		"_postman_id": "ab6da719-11bd-7eb7-3424-8fe842eea436",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API",
+			"description": "",
+			"item": [
+				{
+					"name": "API Login",
+					"request": {
+						"url": "http://eagrodev.com.br:3000/v1/sessions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.eagro.v1",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"session\":{\n    \"email\": \"rodrigo@rtoledo.inf.br\",\n    \"password\": \"asdqwe123\"\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "API Logout",
+					"request": {
+						"url": "http://eagrodev.com.br:3000/v1/sessions/b7kTdRWsPASqdFtgPCz1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.eagro.v1",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"session\":{\n    \"email\": \"rodrigo@rtoledo.inf.br\",\n    \"password\": \"asdqwe123\"\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "User Informations",
+					"request": {
+						"url": "http://eagrodev.com.br:3000/v1/users",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.eagro.v1",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "b7kTdRWsPASqdFtgPCz1",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"session\":{\n    \"email\": \"rodrigo@rtoledo.inf.br\",\n    \"password\": \"asdqwe123\"\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Projects of Current User",
+					"request": {
+						"url": "http://eagrodev.com.br:3000/v1/projects",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.eagro.v1",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "b7kTdRWsPASqdFtgPCz1",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"session\":{\n    \"email\": \"rodrigo@rtoledo.inf.br\",\n    \"password\": \"asdqwe123\"\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "TodoLists of Project in Current User",
+					"request": {
+						"url": "http://eagrodev.com.br:3000/v1/projects/40/todo_lists/584",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.eagro.v1",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "b7kTdRWsPASqdFtgPCz1",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"session\":{\n    \"email\": \"rodrigo@rtoledo.inf.br\",\n    \"password\": \"asdqwe123\"\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update TodoLists of Project in Current User",
+					"request": {
+						"url": "http://eagrodev.com.br:3000/v1/projects/40/todo_lists/584",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.eagro.v1",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "b7kTdRWsPASqdFtgPCz1",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"todo_list\":{\n    \"is_checked\": true\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rails Application",
+			"description": "",
+			"item": [
+				{
+					"name": "Login Home",
+					"request": {
+						"url": "http://eagrodev.com.br:3000/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"url": "http://eagrodev.com.br:3000//users/sign_in",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user[email]",
+									"value": "admin@eagro.com.br",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "user[password]",
+									"value": "asdqwe123",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

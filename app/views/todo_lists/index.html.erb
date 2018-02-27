@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+  <h1 class="h2">Lista de Tarefas</h1>
+</div>
+
+<%= render partial: "todo_lists", locals: {todo_lists: @todo_lists} %>
+
+<br />
+
+<%= link_to 'Criar Tarefa', new_todo_list_path, class: 'btn btn-primary btn-sm' %>

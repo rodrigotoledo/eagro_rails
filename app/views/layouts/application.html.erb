@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>eAgro :: Projects</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <%= link_to 'eAgro :: Projects', root_path, class: 'navbar-brand col-sm-3 col-md-2 mr-0'%>
+      <% if user_signed_in? %>
+      <%= form_tag projects_path, method: :get, class: 'search_projects' do %>
+      <input class="form-control form-control-dark w-100" name="search" type="text" placeholder="Buscar por projetos" aria-label="Buscar por projetos">
+      <% end %>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <%= link_to 'Sair do Sistema', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+      </ul>
+      <% end %>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <%= render "layouts/nav_bar" %>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <% if notice %>
+          <div class="alert alert-success" role="alert">
+            <%= notice %>
+          </div>
+          <% end %>
+
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+  </body>
+</html>

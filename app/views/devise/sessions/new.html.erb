@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+  <h1 class="h2">Entrar no sistema eAgro Projects</h1>
+</div>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.button :submit, 'Entrar', class: 'btn btn-primary' %> | 
+  <%= render "devise/shared/links" %>
+<% end %>

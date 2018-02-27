@@ -1,0 +1,9 @@
+<%= simple_form_for(project, local: true) do |form| %>
+  <%= form.input :title %>
+
+  <div class="actions">
+    <%= form.submit 'Salvar', class: 'btn btn-primary btn-sm' %>
+    <%= link_to('Detalhes', project, class: 'btn btn-info btn-sm') unless project.new_record? %>
+    <%= link_to 'Cancelar', projects_path, class: 'btn btn-info btn-sm' %>
+  </div>
+<% end %>

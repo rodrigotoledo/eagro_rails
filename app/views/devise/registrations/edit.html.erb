@@ -1,0 +1,19 @@
+<h2>Atualização de dados</h2>
+
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
+
+  <%= f.input :name %>
+  <%= f.input :email, required: true %>
+  <%= f.input :password, required: true %>
+  <% if @minimum_password_length %>
+  <em>(<%= @minimum_password_length %> characters minimum)</em>
+  <% end %><br />
+  <%= f.input :password_confirmation, required: true %>
+  <%= f.input :current_password, autocomplete: "off" %>
+
+  <div class="actions">
+    <%= f.submit "Atualizar Conta", class: 'btn btn-primary btn-sm' %>
+    <%= render "devise/shared/links" %>
+  </div>
+<% end %>

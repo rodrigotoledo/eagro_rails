@@ -1,0 +1,43 @@
+<h3>Dados do Projeto</h3>
+
+<p>
+  <strong>Título:</strong>
+  <%= @project.title %>
+</p>
+
+<p>
+  <strong>Total de Tarefas:</strong>
+  <%= @project.todo_lists.count %>
+</p>
+
+<p>
+  <strong>Total de Tarefas Realizadas:</strong>
+  <%= @project.todo_lists_checkeds.count %>
+</p>
+
+
+<p>
+  <strong>Total de Tarefas Não Realizadas:</strong>
+  <%= @project.todo_lists_not_checkeds.count %>
+</p>
+
+
+<p>
+  <strong>Data da Criação:</strong>
+  <%= l @project.created_at %>
+</p>
+
+<p>
+  <strong>Última Atualização:</strong>
+  <%= l @project.created_at %>
+</p>
+
+<%= link_to 'Atualizar', edit_project_path(@project), class: 'btn btn-primary btn-sm' %> |
+<%= link_to 'Voltar', projects_path, class: 'btn btn-info btn-sm' %>
+<br />
+<br />
+
+<h2>Tarefas</h2>
+
+<%= render partial: "todo_lists/todo_lists", locals: {todo_lists: @project.todo_lists.paginate(page: params[:page], per_page: 15)} %>
+

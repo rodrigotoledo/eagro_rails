@@ -1,0 +1,15 @@
+<%= simple_form_for(@todo_list) do |form| %>
+
+  <div class="form-inputs">
+    <%= form.association :project, collection: current_user.projects %>
+    <%= form.input :description %>
+    <%= form.input :is_checked %>
+    <%= form.input :scheduled_to %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit 'Salvar', class: 'btn btn-primary btn-sm' %>
+    <%= link_to('Detalhes', todo_list, class: 'btn btn-info btn-sm') unless todo_list.new_record? %>
+    <%= link_to 'Cancelar', todo_lists_path, class: 'btn btn-info btn-sm' %>
+  </div>
+<% end %>

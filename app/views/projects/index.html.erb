@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+  <h1 class="h2">Lista de Projetos</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Título</th>
+        <th>Total de Tarefas</th>
+        <th>Tarefas Realizadas</th>
+        <th>Tarefas Não Realizadas</th>
+        <th>Criação</th>
+        <th>Atualização</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%= project.id %></td>
+          <td><%= truncate project.title %></td>
+          <td><%= project.todo_lists.count %></td>
+          <td><%= project.todo_lists_checkeds.count %></td>
+          <td><%= project.todo_lists_not_checkeds.count %></td>
+          <td><%= l project.created_at, format: :short %></td>
+          <td><%= l project.updated_at, format: :short %></td>
+          <td>
+            <div class="btn-group btn-group-sm" role="group" aria-label="...">
+              <%= link_to 'Detalhes', project, class: 'btn btn-info btn-sm' %>
+              <%= link_to 'Editar', edit_project_path(project), class: 'btn btn-info btn-sm' %>
+              <%= link_to 'Apagar', project, method: :delete, data: { confirm: 'Deseja continuar com esta ação? Ela não poderá ser desfeita.' }, class: 'btn btn-danger btn-sm' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% if @projects.total_entries > 15 %>
+	<div class="apple_pagination">
+		<%= will_paginate @projects, :page_links => false %>
+	</div>
+  <% end %>
+</div>
+
+<br />
+
+<%= link_to 'Criar Projeto', new_project_path, class: 'btn btn-primary btn-sm' %>

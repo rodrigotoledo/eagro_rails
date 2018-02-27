@@ -1,0 +1,79 @@
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+	<div class="sidebar-sticky">
+		<ul class="nav flex-column">
+			<% if user_signed_in? %>
+			<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+				<span>Olá, <%= truncate(current_user.name, length: 14) %></span>
+				<a class="d-flex align-items-center text-muted" href="javascript:;">
+					<span data-feather="plus-circle"></span>
+				</a>
+			</h6>
+			<li class="nav-item">
+				<%= link_to edit_user_registration_path, class: ['nav-link', current_page?(edit_user_registration_path) ? 'active' : nil].compact do%>
+					<span data-feather="user-check"></span>
+					Atualizar meus dados
+				<% end %>
+			</li>
+
+			<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+				<span>Projetos</span>
+				<a class="d-flex align-items-center text-muted" href="javascript:;">
+					<span data-feather="plus-circle"></span>
+				</a>
+			</h6>
+			<li class="nav-item">
+				<%= link_to root_path, class: ['nav-link', current_page?(root_path) ? 'active' : nil].compact do%>
+					<span data-feather="folder"></span>
+					Lista de Projetos
+				<% end %>
+			</li>
+			<li class="nav-item">
+				<%= link_to new_project_path, class: ['nav-link', current_page?(new_project_path) ? 'active' : nil].compact do%>
+					<span data-feather="folder-plus"></span>
+					Criar projeto
+				<% end %>
+			</li>
+		</ul>
+
+		<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+			<span>Tarefas</span>
+			<a class="d-flex align-items-center text-muted" href="javascript:;">
+				<span data-feather="plus-circle"></span>
+			</a>
+		</h6>
+		<ul class="nav flex-column mb-2">
+			<li class="nav-item">
+				<%= link_to todo_lists_path, class: ['nav-link', current_page?(todo_lists_path) ? 'active' : nil].compact do%>
+					<span data-feather="list"></span>
+					Lista de Tarefas
+				<% end %>
+			</li>
+			<li class="nav-item">
+				<%= link_to new_todo_list_path, class: ['nav-link', current_page?(new_todo_list_path) ? 'active' : nil].compact do%>
+					<span data-feather="file-plus"></span>
+					Criar Tarefa
+				<% end %>
+			</li>
+			<% else %>
+			<li class="nav-item">
+				<%= link_to new_user_session_path, class: 'nav-link' do %>
+					<span data-feather="log-in"></span>
+					Entrar no Sistema
+				<% end %>
+			</li>
+			<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+				<span>Ou melhor ainda</span>
+				<%= link_to new_user_registration_path, class: 'd-flex align-items-center text-muted' do %>
+					<span data-feather="plus-circle"></span>
+				<% end %>
+			</h6>
+			<li class="nav-item">
+				<%= link_to new_user_registration_path, class: 'nav-link' do %>
+					<span data-feather="user-plus"></span>
+					Faça seu registro
+				<% end %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+</nav>

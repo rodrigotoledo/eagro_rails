@@ -1,0 +1,29 @@
+<h3>Dados da Lista de Tarefas</h3>
+
+<p>
+  <strong>Projeto:</strong>
+  <%= @todo_list.project %>
+</p>
+
+<p>
+  <strong>Descrição:</strong>
+  <%= @todo_list.description %>
+</p>
+
+<p>
+  <strong>Realizada?:</strong>
+  <%= todo_list_is_checked?(@todo_list.is_checked) %>
+</p>
+
+<p>
+  <strong>Agendada para:</strong>
+  <%= l @todo_list.scheduled_to %>
+</p>
+
+<p>
+  <strong>Data da Criação:</strong>
+  <%= l @todo_list.created_at %>
+</p>
+
+<%= link_to 'Atualizar', edit_todo_list_path(@todo_list), class: 'btn btn-primary btn-sm' %> |
+<%= link_to 'Voltar', todo_lists_path, class: 'btn btn-info btn-sm' %>

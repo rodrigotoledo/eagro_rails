@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="login_page">
+  <head>
+    <title>eAgro :: Projects</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'devise', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <div class="login_box">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'login_form'} ) do |f| %>
+				<div class="top_b">Entrar no Sistema eAgro Admin</div>    
+				<div class="alert alert-info alert-login">
+					Limpe o nome de usuário e o campo de senha para ver a validação.
+				</div>
+				<div class="cnt_b">
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon input-sm"><i class="glyphicon glyphicon-user"></i></span>
+              <%= f.input :email, class: 'form-control input-sm', placeholder: 'Usuário', label: false %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon input-sm"><i class="glyphicon glyphicon-lock"></i></span>
+              <%= f.input :password, type: :password, class: 'form-control input-sm', placeholder: 'Senha', label: false %>
+						</div>
+					</div>
+				</div>
+				<div class="btm_b clearfix">
+					<button class="btn btn-default btn-sm pull-right" id='login' type="button">Entrar no sistema</button>
+					<span class="link_reg"><a href="#reg_form">Ainda não é registrado? Clique aqui</a></span>
+				</div>
+      <% end %>
+      
+			
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, id: 'pass_form', style: 'display:none' }) do |f| %>
+				<div class="top_b">Não consegue entrar no sistema?</div>    
+					<div class="alert alert-info alert-login">
+					Insira seu email abaixo para receber instruções para acessar novamente o sistema.
+				</div>
+				<div class="cnt_b">
+					<div class="formRow clearfix">
+						<div class="input-group">
+							<span class="input-group-addon input-sm">@</span>
+              <%= f.text_field :email, autofocus: true, placeholder: "Digite seu email aqui", class: 'form-control input-sm', id: 'user_forgot_email' %>
+						</div>
+					</div>
+				</div>
+				<div class="btm_b tac">
+					<button class="btn btn-default" type="submit">Receber uma nova senha</button>
+				</div>
+      <% end %>
+      
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'reg_form', style: 'display:none' }) do |f| %>
+				<div class="top_b">Registre-se no eAgro Admin</div>
+				<div class="alert alert-warning alert-login">
+					Preenchendo os campos e clicando no botão "Registrar-se", você automaticamente aceita os <a data-toggle="modal" href="#terms">Termos e Condições</a> de nossos serviços.
+				</div>
+				<div id="terms" class="modal fade">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h3 class="modal-title">Termos e Condições</h3>
+							</div>
+							<div class="modal-body">
+								<p>
+									Nulla sollicitudin pulvinar enim, vitae mattis velit venenatis vel. Nullam dapibus est quis lacus tristique consectetur. Morbi posuere vestibulum neque, quis dictum odio facilisis placerat. Sed vel diam ultricies tortor egestas vulputate. Aliquam lobortis felis at ligula elementum volutpat. Ut accumsan sollicitudin neque vitae bibendum. Suspendisse id ullamcorper tellus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum at augue lorem, at sagittis dolor. Curabitur lobortis justo ut urna gravida scelerisque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam vitae ligula elit.
+									Pellentesque tincidunt mollis erat ac iaculis. Morbi odio quam, suscipit at sagittis eget, commodo ut justo. Vestibulum auctor nibh id diam placerat dapibus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse vel nunc sed tellus rhoncus consectetur nec quis nunc. Donec ultricies aliquam turpis in rhoncus. Maecenas convallis lorem ut nisl posuere tristique. Suspendisse auctor nibh in velit hendrerit rhoncus. Fusce at libero velit. Integer eleifend sem a orci blandit id condimentum ipsum vehicula. Quisque vehicula erat non diam pellentesque sed volutpat purus congue. Duis feugiat, nisl in scelerisque congue, odio ipsum cursus erat, sit amet blandit risus enim quis ante. Pellentesque sollicitudin consectetur risus, sed rutrum ipsum vulputate id. Sed sed blandit sem. Integer eleifend pretium metus, id mattis lorem tincidunt vitae. Donec aliquam lorem eu odio facilisis eu tempus augue volutpat.
+								</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Fechar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="cnt_b">
+					
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon input-sm"><i class="glyphicon glyphicon-user"></i></span>
+              <%= f.text_field :name, placeholder: "Digite seu nome", required: true, class: 'form-control input-sm', id: 'r_name' %>
+              
+              <% f.input :password_confirmation, required: true %>
+						</div>
+					</div>
+          <div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon input-sm">@</span>
+              <%= f.text_field :email, placeholder: "Digite seu email", required: true, class: 'form-control input-sm', id: 'r_email' %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon input-sm"><i class="glyphicon glyphicon-lock"></i></span>
+              <%= f.password_field :password, required: true, placeholder: 'Digite sua senha', class: 'form-control input-sm', value: '', id: 'r_password' %>
+						</div>
+					</div>
+          <div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon input-sm"><i class="glyphicon glyphicon-lock"></i></span>
+							<%= f.password_field :password_confirmation, required: true, placeholder: 'Confirme sua senha', class: 'form-control input-sm', value: '', id: 'r_password_confirmation' %>
+						</div>
+            <% if @minimum_password_length %>
+            <span class="help-block">(<%= @minimum_password_length %> caracteres ao mínimo)</span>
+            <% end %>
+					</div>
+				</div>
+				<div class="btm_b tac">
+					<button class="btn btn-default" type="submit">Registrar-se</button>
+				</div>  
+			<% end %>
+			
+			<div class="links_b links_btm clearfix">
+				<span class="linkform"><a href="#pass_form">Esqueceu sua senha?</a></span>
+				<span class="linkform" style="display:none"><a href="#login_form">Voltar para a tela de login</a></span>
+			</div>
+			
+		</div>
+    <%= javascript_include_tag 'devise', 'data-turbolinks-track': 'reload' %>
+    <script>
+      $(document).ready(function(){
+                
+				//* boxes animation
+				form_wrapper = $('.login_box');
+				function boxHeight() {
+					form_wrapper.animate({ marginTop : ( - ( form_wrapper.height() / 2) - 24) },400);	
+				};
+				form_wrapper.css({ marginTop : ( - ( form_wrapper.height() / 2) - 24) });
+                $('.linkform a,.link_reg a').on('click',function(e){
+					var target	= $(this).attr('href'),
+						target_height = $(target).actual('height');
+					$(form_wrapper).css({
+						'height'		: form_wrapper.height()
+					});	
+					$(form_wrapper.find('form:visible')).fadeOut(400,function(){
+						form_wrapper.stop().animate({
+                            height	 : target_height,
+							marginTop: ( - (target_height/2) - 24)
+                        },500,function(){
+                            $(target).fadeIn(400);
+                            $('.links_btm .linkform').toggle();
+							$(form_wrapper).css({
+								'height'		: ''
+							});	
+                        });
+					});
+					e.preventDefault();
+				});
+				
+				//* validation
+				$('#login_form').validate({
+					onkeyup: false,
+					errorClass: 'error',
+					validClass: 'valid',
+					rules: {
+						username: { required: true, minlength: 3 },
+						password: { required: true, minlength: 3 }
+					},
+					highlight: function(element) {
+						$(element).closest('.form-group').addClass("f_error");
+						setTimeout(function() {
+							boxHeight()
+						}, 200)
+					},
+					unhighlight: function(element) {
+						$(element).closest('.form-group').removeClass("f_error");
+						setTimeout(function() {
+							boxHeight()
+						}, 200)
+					},
+					errorPlacement: function(error, element) {
+						$(element).closest('.form-group').append(error);
+					}
+				});
+      });
+    </script>
+  </body>
+</html>
